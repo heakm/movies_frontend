@@ -1,0 +1,14 @@
+<div class="container my-5 py-5">
+  <div class="row">
+    <div class="col-lg-4 col-sm-6" *ngFor="let user of users">
+      <div class="card text-left">
+        <img class="card-img-top" src="holder.js/100px180/" alt="">
+        <div class="card-body">
+          <a class="card-title">{{user.name}}</a>
+          <p class="card-text">{{user.gender}}</p>
+          <p class="card-text">{{user.age}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
