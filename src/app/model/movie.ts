@@ -1,5 +1,7 @@
 export interface Movie{
-  "_id":string;
+  "_id":number;
   "title": string;
   "genres": string;
+  "rating"?:number;
+  "timestamp"?:number;
 }

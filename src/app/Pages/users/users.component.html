@@ -1,12 +1,19 @@
-<div class="container my-5 py-5">
+<div class="container my-5">
   <div class="row">
-    <div class="col-lg-4 col-sm-6" *ngFor="let user of users">
+    <div class="col-12 mb-5">
+      <div class="form-group">
+        <label for="search">Search for user</label>
+        <input type="text" name="searchbox" id="search" class="form-control" placeholder="" aria-describedby="helpId">
+        <button class="mt-3 btn btn-primary" type="submit">Search</button>
+      </div>
+    </div>
+    <div class="col-lg-3 col-sm-6 mb-5" *ngFor="let user of users">
       <div class="card text-left">
-        <img class="card-img-top" src="holder.js/100px180/" alt="">
+        <img class="card-img-top" ngSrc="assets/images/profile-img.jpg" alt="" height="400" width="1000">
         <div class="card-body">
-          <a class="card-title">{{user.name}}</a>
-          <p class="card-text">{{user.gender}}</p>
-          <p class="card-text">{{user.age}}</p>
+          <a class="card-title" (click)="userDetail(user._id)"><h4 class="link-dark link-opacity-50-hover">{{user.name}}</h4></a>
+          <p class="card-text">Gender: {{user.gender}}</p>
+          <p class="card-text">Age: {{user.age}}</p>
         </div>
       </div>
     </div>

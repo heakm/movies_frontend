@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import {User} from "../model/user";
-import {ReqresService} from "../services/reqres.service";
+import {User} from "../../model/user";
+import {RequestService} from "../../services/request.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-users',
@@ -9,14 +10,12 @@ import {ReqresService} from "../services/reqres.service";
 })
 export class UsersComponent {
   users: User[] = [];
-  genId(users: User[]): number {
-    return users.length > 0 ? Math.max(...users.map(user => user._id)) + 1 : 11;
-  }
-  constructor( private reqresService: ReqresService ) {
+  user: User | undefined;
+  constructor( private requestService: RequestService, private router: Router ) {
     this.getUsers();
   }
   getUsers() {
-    this.reqresService.getUsers().subscribe(
+    this.requestService.getUsers().subscribe(
       (res: User[]) => {
         this.users = res;
       },
@@ -24,5 +23,15 @@ export class UsersComponent {
         console.error(err);
       }
     );
+  }
+
+  userDetail(_id: number) {
+    this.requestService.getUser(_id).subscribe(
+      (res: User) =>{
+        this.router.navigate( ['user', _id] );
+      },(err)=>{
+        console.error(err)
+      }
+    )
   }
 }

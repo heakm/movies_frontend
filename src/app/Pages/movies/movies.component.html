@@ -1,0 +1,20 @@
+<div class="container my-5">
+  <div class="row">
+    <div class="col-12 mb-5">
+      <div class="form-group">
+        <label for="search">Search for a movie</label>
+        <input type="text" name="searchbox" id="search" class="form-control" placeholder="" aria-describedby="helpId">
+        <button class="mt-3 btn btn-primary" type="submit">Search</button>
+      </div>
+    </div>
+    <div class="col-lg-3 col-sm-6 mb-3" *ngFor="let movie of movies">
+      <div class="card text-left">
+        <img class="card-img-top" src="holder.js/100px180/" alt="">
+        <div class="card-body">
+          <a class="card-title" (click)="movieDetail(movie._id)">{{movie.title}}</a>
+          <p class="card-text">{{movie.genres}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
